@@ -1,0 +1,9 @@
+{
+	"auth": {
+		"fitnesstracker8136d825": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": []
+		}
+	}
+}
