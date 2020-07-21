@@ -1,30 +1,32 @@
-import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import Auth from './src/screens/Auth';
+import Auth from './src/Nav/Auth';
+import Main from './src/Nav/Main';
+
+import { UserProvider } from './src/context/UserContext';
 
 import Amplify from 'aws-amplify';
 import AWSConfig from './aws-exports';
 Amplify.configure(AWSConfig);
 
 export default function App() {
-  const [authenticated, setAuthenticated] = useState(false);
+  const [userData, setUserData] = useState({
+    authenticated: false,
+    user: null,
+    loginDate: null,
+  });
 
-  if(authenticated){
-    return(
-      <View style={styles.container}>
-        <Text>Hello!</Text>
-      </View>
-    )
-  }
+  const value = { userData, setUserData };
 
   return(
-    <Auth 
-      screenProps={{
-        authenticated: authenticated
-      }}
-    />
+    <UserProvider value={value}>
+      {userData.authenticated ?
+        <Main />
+        :
+        <Auth />
+      }
+    </UserProvider>
   )
 }
 
