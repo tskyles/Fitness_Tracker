@@ -4,21 +4,23 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 import SignUp from '../components/SignUp';
+import SignIn from '../components/SignIn';
 
 const Tab = createBottomTabNavigator();
 
 export default function Auth(props){
-  console.log('auth props', props);
   return(
     <SafeAreaProvider>
       <NavigationContainer>
         <Tab.Navigator
-          screenProps={props.setAuth}
         >
           <Tab.Screen
             name='SignUp'
             component={SignUp}
-            props={props.setAuth}
+          />
+          <Tab.Screen
+            name='SignIn'
+            component={SignIn}
           />
         </Tab.Navigator>
       </NavigationContainer>

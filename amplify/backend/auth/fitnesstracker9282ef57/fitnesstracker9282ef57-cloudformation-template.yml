@@ -85,10 +85,7 @@ Parameters:
                                       
   useDefault:
     Type: String
-                      
-  usernameAttributes:
-    Type: CommaDelimitedList
-      
+              
   triggers:
     Type: String
                       
@@ -115,7 +112,7 @@ Resources:
   # Created to allow the UserPool SMS Config to publish via the Simple Notification Service during MFA Process
     Type: AWS::IAM::Role
     Properties:
-      RoleName: !If [ShouldNotCreateEnvResources, 'fitnes8136d825_sns-role', !Join ['',[ 'sns', '8136d825', !Select [3, !Split ['-', !Ref 'AWS::StackName']], '-', !Ref env]]]
+      RoleName: !If [ShouldNotCreateEnvResources, 'fitnes9282ef57_sns-role', !Join ['',[ 'sns', '9282ef57', !Select [3, !Split ['-', !Ref 'AWS::StackName']], '-', !Ref env]]]
       AssumeRolePolicyDocument: 
         Version: "2012-10-17"
         Statement: 
@@ -127,10 +124,10 @@ Resources:
               - "sts:AssumeRole"
             Condition: 
               StringEquals:
-                sts:ExternalId: fitnes8136d825_role_external_id
+                sts:ExternalId: fitnes9282ef57_role_external_id
       Policies: 
         - 
-          PolicyName: fitnes8136d825-sns-policy
+          PolicyName: fitnes9282ef57-sns-policy
           PolicyDocument: 
             Version: "2012-10-17"
             Statement: 
@@ -171,14 +168,12 @@ Resources:
           RequireNumbers: false
           RequireSymbols: false
           RequireUppercase: false
-      
-      UsernameAttributes: !Ref usernameAttributes
           
       MfaConfiguration: !Ref mfaConfiguration
       SmsVerificationMessage: !Ref smsVerificationMessage
       SmsConfiguration: 
         SnsCallerArn: !GetAtt SNSRole.Arn
-        ExternalId: fitnes8136d825_role_external_id
+        ExternalId: fitnes9282ef57_role_external_id
     
   
     
@@ -198,7 +193,7 @@ Resources:
   # Depends on UserPool for ID reference
     Type: "AWS::Cognito::UserPoolClient"
     Properties:
-      ClientName: fitnes8136d825_app_clientWeb
+      ClientName: fitnes9282ef57_app_clientWeb
       
       RefreshTokenValidity: !Ref userpoolClientRefreshTokenValidity
       UserPoolId: !Ref UserPool
@@ -208,7 +203,7 @@ Resources:
   # Depends on UserPool for ID reference
     Type: "AWS::Cognito::UserPoolClient"
     Properties:
-      ClientName: fitnes8136d825_app_client
+      ClientName: fitnes9282ef57_app_client
       
       GenerateSecret: !Ref userpoolClientGenerateSecret
       RefreshTokenValidity: !Ref userpoolClientRefreshTokenValidity
@@ -219,7 +214,7 @@ Resources:
   # Created to execute Lambda which gets userpool app client config values
     Type: 'AWS::IAM::Role'
     Properties:
-      RoleName: !If [ShouldNotCreateEnvResources, !Ref userpoolClientLambdaRole, !Join ['',['upClientLambdaRole', '8136d825', !Select [3, !Split ['-', !Ref 'AWS::StackName']], '-', !Ref env]]]
+      RoleName: !If [ShouldNotCreateEnvResources, !Ref userpoolClientLambdaRole, !Join ['',['upClientLambdaRole', '9282ef57', !Select [3, !Split ['-', !Ref 'AWS::StackName']], '-', !Ref env]]]
       AssumeRolePolicyDocument:
         Version: '2012-10-17'
         Statement:
@@ -273,7 +268,7 @@ Resources:
   # Marked as depending on UserPoolClientRole for easier to understand CFN sequencing
     Type: 'AWS::IAM::Policy'
     Properties:
-      PolicyName: fitnes8136d825_userpoolclient_lambda_iam_policy
+      PolicyName: fitnes9282ef57_userpoolclient_lambda_iam_policy
       Roles: 
         - !Ref UserPoolClientRole
       PolicyDocument:
@@ -290,7 +285,7 @@ Resources:
   # Marked as depending on UserPoolClientLambdaPolicy for easier to understand CFN sequencing
     Type: 'AWS::IAM::Policy'
     Properties:
-      PolicyName: fitnes8136d825_userpoolclient_lambda_log_policy
+      PolicyName: fitnes9282ef57_userpoolclient_lambda_log_policy
       Roles: 
         - !Ref UserPoolClientRole
       PolicyDocument:
@@ -330,7 +325,7 @@ Resources:
   # Always created
     Type: AWS::Cognito::IdentityPool
     Properties: 
-      IdentityPoolName: !If [ShouldNotCreateEnvResources, 'fitnesstracker8136d825_identitypool_8136d825', !Join ['',['fitnesstracker8136d825_identitypool_8136d825', '__', !Ref env]]]
+      IdentityPoolName: !If [ShouldNotCreateEnvResources, 'fitnesstracker9282ef57_identitypool_9282ef57', !Join ['',['fitnesstracker9282ef57_identitypool_9282ef57', '__', !Ref env]]]
       
       CognitoIdentityProviders:
         - ClientId:  !Ref UserPoolClient

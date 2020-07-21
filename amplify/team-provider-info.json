@@ -1,19 +1,19 @@
 {
     "dev": {
         "awscloudformation": {
-            "AuthRoleName": "amplify-fitnesstracker-dev-194817-authRole",
-            "UnauthRoleArn": "arn:aws:iam::730595654469:role/amplify-fitnesstracker-dev-194817-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::730595654469:role/amplify-fitnesstracker-dev-194817-authRole",
+            "AuthRoleName": "amplify-fitnesstracker-dev-224426-authRole",
+            "UnauthRoleArn": "arn:aws:iam::730595654469:role/amplify-fitnesstracker-dev-224426-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::730595654469:role/amplify-fitnesstracker-dev-224426-authRole",
             "Region": "us-west-2",
-            "DeploymentBucketName": "amplify-fitnesstracker-dev-194817-deployment",
-            "UnauthRoleName": "amplify-fitnesstracker-dev-194817-unauthRole",
-            "StackName": "amplify-fitnesstracker-dev-194817",
-            "StackId": "arn:aws:cloudformation:us-west-2:730595654469:stack/amplify-fitnesstracker-dev-194817/cee316c0-c70e-11ea-bebb-02ccdf8c0a60",
-            "AmplifyAppId": "dgnfvhk4sw28x"
+            "DeploymentBucketName": "amplify-fitnesstracker-dev-224426-deployment",
+            "UnauthRoleName": "amplify-fitnesstracker-dev-224426-unauthRole",
+            "StackName": "amplify-fitnesstracker-dev-224426",
+            "StackId": "arn:aws:cloudformation:us-west-2:730595654469:stack/amplify-fitnesstracker-dev-224426/3dda2640-cb15-11ea-b723-0284c9f60df0",
+            "AmplifyAppId": "d5samlm6r8cjz"
         },
         "categories": {
             "auth": {
-                "fitnesstracker8136d825": {}
+                "fitnesstracker9282ef57": {}
             }
         }
     }

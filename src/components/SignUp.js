@@ -10,6 +10,7 @@ import { Auth } from 'aws-amplify';
 export default function SignUp(props){
   const { userData, setUserData } = useContext(UserContext);
 
+  const [username, setUsername] = useState(null);
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [registered, setRegistered] = useState(false);
@@ -18,7 +19,7 @@ export default function SignUp(props){
 
   function signUp(){
     Auth.signUp({
-      username: email,
+      username: username,
       password: password,
       attributes: {
         email: email,
@@ -40,7 +41,7 @@ export default function SignUp(props){
   }
 
   function verify(){
-    Auth.confirmSignUp(email, code)
+    Auth.confirmSignUp(username, code)
       .then(user => {
         console.log('verified', user);
       })
@@ -58,6 +59,11 @@ export default function SignUp(props){
       {!registered
         ?
         <>
+          <TextInput
+            styles={styles.input}
+            placeholder='username'
+            onChangeText={value => setUsername(value)}
+          />
           <TextInput 
             styles={styles.input}
             placeholder='email'

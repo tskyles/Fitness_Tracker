@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "fitnesstracker8136d825_identitypool_8136d825",
+    "identityPoolName": "fitnesstracker9282ef57_identitypool_9282ef57",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "fitnes8136d825",
-    "userPoolName": "fitnesstracker8136d825_userpool_8136d825",
+    "resourceNameTruncated": "fitnes9282ef57",
+    "userPoolName": "fitnesstracker9282ef57_userpool_9282ef57",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -28,10 +28,10 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "fitnes8136d825_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "fitnes9282ef57_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "8136d825",
-    "resourceName": "fitnesstracker8136d825",
+    "sharedId": "9282ef57",
+    "resourceName": "fitnesstracker9282ef57",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [
@@ -46,9 +46,6 @@
         ]
     },
     "useDefault": "default",
-    "usernameAttributes": [
-        "email"
-    ],
     "triggers": "{}",
     "userPoolGroupList": [],
     "parentStack": {
