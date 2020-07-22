@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import SignUp from '../../components/SignUp';
 import SignIn from '../../components/SignIn';
@@ -13,14 +13,22 @@ export default function Auth(props){
     <SafeAreaProvider>
       <NavigationContainer>
         <Tab.Navigator
+          tabBarOptions={{
+            keyboardHidesTabBar: true,
+            showIcon: false,
+            tabStyle: {
+              alignContent: 'center',
+              justifyContent: 'center'
+            }
+          }}
         >
-          <Tab.Screen
-            name='SignUp'
-            component={SignUp}
-          />
           <Tab.Screen
             name='SignIn'
             component={SignIn}
+          />
+          <Tab.Screen
+            name='SignUp'
+            component={SignUp}
           />
         </Tab.Navigator>
       </NavigationContainer>
@@ -28,3 +36,4 @@ export default function Auth(props){
 
   )
 }
+
