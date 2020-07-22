@@ -2,9 +2,10 @@ import React, { useState, useContext } from 'react';
 import { TextInput, Button, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { UserContext } from '../context/UserContext';
+import { UserContext } from '../../context/UserContext';
 
 import { Auth } from 'aws-amplify';
+import { ceil } from 'react-native-reanimated';
 
 
 export default function SignUp(props){
@@ -55,22 +56,22 @@ export default function SignUp(props){
   }
 
   return (
-    <SafeAreaView styles={styles.container}>
+    <SafeAreaView style={styles.container}>
       {!registered
         ?
         <>
           <TextInput
-            styles={styles.input}
+            style={styles.input}
             placeholder='username'
             onChangeText={value => setUsername(value)}
           />
           <TextInput 
-            styles={styles.input}
+            style={styles.input}
             placeholder='email'
             onChangeText={value => setEmail(value)}
           />
           <TextInput
-            styles={styles.input}
+            style={styles.input}
             placeholder='password'
             onChangeText={value => setPassword(value)}
             secureTextEntry={true}
@@ -83,7 +84,7 @@ export default function SignUp(props){
         :
         <>
           <TextInput
-            styles={styles.input}
+            style={styles.input}
             placeholder='verification code'
             onChangeText={value => setCode(value)}
           />
@@ -105,8 +106,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    paddingTop: 50,
-    marginTop: 50,
+    justifyContent: "center",
+    alignContent: "center"
   },
   input: {
     height: 50,

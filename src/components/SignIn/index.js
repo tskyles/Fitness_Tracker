@@ -30,14 +30,14 @@ export default function SignIn(props) {
   }
 
   return (
-    <SafeAreaView styles={styles.container}>
+    <SafeAreaView style={styles.container}>
       <TextInput
-        styles={styles.input}
+        style={styles.input}
         placeholder='username'
         onChangeText={value => setUsername(value)}
       />
       <TextInput
-        styles={styles.input}
+        style={styles.input}
         placeholder='password'
         onChangeText={value => setPassword(value)}
         secureTextEntry={true}
@@ -54,8 +54,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    paddingTop: 50,
-    marginTop: 50,
+    justifyContent: "center",
   },
   input: {
     height: 50,
