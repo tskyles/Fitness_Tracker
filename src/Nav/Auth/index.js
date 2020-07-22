@@ -3,8 +3,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
-import SignUp from '../components/SignUp';
-import SignIn from '../components/SignIn';
+import SignUp from '../../components/SignUp';
+import SignIn from '../../components/SignIn';
 
 const Tab = createBottomTabNavigator();
 

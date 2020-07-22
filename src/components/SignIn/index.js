@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { TextInput, Button, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { UserContext } from '../context/UserContext';
+import { UserContext } from '../../context/UserContext';
 
 import { Auth } from 'aws-amplify';
 
