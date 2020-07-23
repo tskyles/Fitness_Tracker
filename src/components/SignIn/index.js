@@ -1,10 +1,8 @@
-import React, { useState, useContext } from 'react';
-import { TextInput, Button, StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-
-import { UserContext } from '../../context/UserContext';
-
 import { Auth } from 'aws-amplify';
+import React, { useContext, useState } from 'react';
+import { Button, StyleSheet, Text, TextInput } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { UserContext } from '../../context/UserContext';
 
 
 export default function SignIn(props) {
@@ -13,6 +11,7 @@ export default function SignIn(props) {
   const [username, setUsername] = useState(null);
   const [password, setPassword] = useState(null);
   const [registered, setRegistered] = useState(false);
+  const [errorMsg, setErrorMsg] = useState(null);
 
   function signIn() {
     Auth.signIn({
@@ -26,7 +25,10 @@ export default function SignIn(props) {
           user: user.signInUserSession.accessToken,
         })
       })
-      .catch(error => console.log('error signing up', error));
+      .catch(error => {
+        console.log('error signing in', error);
+        setErrorMsg(error.message);
+      });
   }
 
   return (
@@ -46,6 +48,9 @@ export default function SignIn(props) {
         title='Sign In'
         onPress={signIn}
       />
+      {errorMsg && 
+        <Text>{errorMsg}</Text>
+      }
     </SafeAreaView>
   )
 }
