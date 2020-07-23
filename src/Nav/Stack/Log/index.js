@@ -1,6 +1,8 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import LogDaily from '../../../Screens/Log/Daily';
+import LogMonthly from '../../../Screens/Log/Monthly';
+import LogWeekly from '../../../Screens/Log/Weekly';
 
 const Stack = createStackNavigator();
 
@@ -13,14 +15,14 @@ export default function LogStackNav(){
         name='Daily'
         component={LogDaily}
       />
-      {/* <Stack.Screen
+      <Stack.Screen
         name='Weekly'
-        component={}
+        component={LogWeekly}
       />
       <Stack.Screen
         name='Monthly'
-        component={}
-      /> */}
+        component={LogMonthly}
+      />
     </Stack.Navigator>
   )
 }
