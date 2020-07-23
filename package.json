@@ -24,6 +24,7 @@
     "@react-native-community/netinfo": "5.9.2",
     "@react-navigation/bottom-tabs": "^5.7.1",
     "@react-navigation/native": "^5.7.0",
+    "@react-navigation/stack": "^5.7.1",
     "aws-amplify": "^3.0.20",
     "aws-amplify-react-native": "^4.2.1",
     "expo": "~38.0.8",

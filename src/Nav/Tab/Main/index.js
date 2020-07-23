@@ -8,7 +8,7 @@ import Settings from '../../../Screens/Settings';
 
 const Tab = createBottomTabNavigator();
 
-export default function Main(props){
+export default function MainTabNav(props){
 
   return (
     <SafeAreaProvider>

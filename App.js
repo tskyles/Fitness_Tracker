@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import AWSConfig from './aws-exports';
 import { UserProvider } from './src/context/UserContext';
-import Auth from './src/Nav/Tab/Auth';
-import Main from './src/Nav/Tab/Main';
+import AuthTabNav from './src/Nav/Tab/Auth';
+import MainTabNav from './src/Nav/Tab/Main';
 
 Amplify.configure(AWSConfig);
 
@@ -21,9 +21,9 @@ export default function App() {
   return(
     <UserProvider value={value}>
       {userData.authenticated ?
-        <Main />
+        <MainTabNav />
         :
-        <Auth />
+        <AuthTabNav />
       }
     </UserProvider>
   )
