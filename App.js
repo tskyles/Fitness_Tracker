@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import AWSConfig from './aws-exports';
 import { UserProvider } from './src/context/UserContext';
-import Auth from './src/Nav/Auth';
-import Main from './src/Nav/Main';
+import Auth from './src/Nav/Tab/Auth';
+import Main from './src/Nav/Tab/Main';
 
 Amplify.configure(AWSConfig);
 

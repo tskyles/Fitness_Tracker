@@ -3,8 +3,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import Log from '../../Pages/Log';
-import Settings from '../../Pages/Settings';
+import Log from '../../../Screens/Log';
+import Settings from '../../../Screens/Settings';
 
 const Tab = createBottomTabNavigator();
 
