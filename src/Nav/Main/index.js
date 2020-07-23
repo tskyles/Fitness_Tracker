@@ -17,6 +17,9 @@ export default function Main(props){
           tabBarOptions={{
             keyboardHidesTabBar: true,
             showIcon: true,
+            activeTintColor: '#707070',
+            inactiveTintColor: '#000000',
+            size: 24,
           }}
         >
           <Tab.Screen 
@@ -24,8 +27,13 @@ export default function Main(props){
             component={Log}
             options={{
               tabBarLabel: 'Log',
-              tabBarIcon: () => (
-                <FontAwesome name="book" size={24} color="black" />
+              tabBarIcon: ({focused, color, size}) => (
+                <FontAwesome
+                  focused={focused}
+                  name="book"
+                  size={size}
+                  color={color}
+                />
               )
             }}
           />
@@ -34,8 +42,13 @@ export default function Main(props){
             component={Settings}
             options={{
               tabBarLabel: 'Settings',
-              tabBarIcon: () => (
-                <MaterialIcons name="settings" size={24} color="black" />
+              tabBarIcon: ({ focused, color, size }) => (
+                <MaterialIcons
+                  focused={focused}
+                  name="settings"
+                  size={size}
+                  color={color}
+                />
               )
             }}
           />
