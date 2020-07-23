@@ -16,9 +16,6 @@ export default function SignUp(props){
   const [registered, setRegistered] = useState(false);
   const [code, setCode] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
-
-  const [verified, setVerified] = useState(false);
-
   const [displayInfo, setDisplayInfo] = useState(false);
 
   function signUp(){

@@ -10,7 +10,6 @@ export default function SignIn(props) {
 
   const [username, setUsername] = useState(null);
   const [password, setPassword] = useState(null);
-  const [registered, setRegistered] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
 
   function signIn() {
