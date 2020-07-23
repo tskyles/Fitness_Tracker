@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const UserContext = React.createContext({
-  authenticated: true,  //set to false before use, currently true for testing/dev
+  authenticated: false,
   user: null,
   setUserData: () => {},
 });
