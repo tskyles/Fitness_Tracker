@@ -5,8 +5,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { UserContext } from '../../context/UserContext';
 
 
-
-
 export default function SignUp(props){
   const { userData, setUserData } = useContext(UserContext);
 
