@@ -1,21 +1,59 @@
+import { FontAwesome, MaterialIcons } from '@expo/vector-icons';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import Log from '../../Pages/Log';
+import Settings from '../../Pages/Settings';
+
+const Tab = createBottomTabNavigator();
 
 export default function Main(props){
 
-
-  return(
-    <View style={styles.container}>
-      <Text>Hello!</Text>
-    </View>
+  return (
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Tab.Navigator
+          tabBarOptions={{
+            keyboardHidesTabBar: true,
+            showIcon: true,
+            activeTintColor: '#707070',
+            inactiveTintColor: '#000000',
+            size: 24,
+          }}
+        >
+          <Tab.Screen 
+            name='Log'
+            component={Log}
+            options={{
+              tabBarLabel: 'Log',
+              tabBarIcon: ({focused, color, size}) => (
+                <FontAwesome
+                  focused={focused}
+                  name="book"
+                  size={size}
+                  color={color}
+                />
+              )
+            }}
+          />
+          <Tab.Screen
+            name='Settings'
+            component={Settings}
+            options={{
+              tabBarLabel: 'Settings',
+              tabBarIcon: ({ focused, color, size }) => (
+                <MaterialIcons
+                  focused={focused}
+                  name="settings"
+                  size={size}
+                  color={color}
+                />
+              )
+            }}
+          />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

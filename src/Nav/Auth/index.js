@@ -1,10 +1,10 @@
-import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-
-import SignUp from '../../components/SignUp';
 import SignIn from '../../components/SignIn';
+import SignUp from '../../components/SignUp';
+
 
 const Tab = createBottomTabNavigator();
 
@@ -16,6 +16,8 @@ export default function Auth(props){
           tabBarOptions={{
             keyboardHidesTabBar: true,
             showIcon: false,
+            activeTintColor: '#707070',
+            inactiveTintColor: '#000000',
             tabStyle: {
               alignContent: 'center',
               justifyContent: 'center'
