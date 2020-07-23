@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-export default function Log(props) {
+
+
+export default function LogDaily(props) {
 
   return (
     <View style={styles.container}>
