@@ -28,6 +28,7 @@ export default function LogStackNav(props){
       initialRouteName='Daily'
       screenOptions={{
         headerTitle: 'Fitness Tracker',
+        headerLeft: null,
         headerRight: () => (
           <>
             <CalenderIcon 
