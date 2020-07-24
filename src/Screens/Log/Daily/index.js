@@ -13,7 +13,7 @@ export default function LogDaily(props) {
         // goForward={}
         />
       <View style={styles.body}>
-        <Text>Log</Text>
+        <Text>Daily Log</Text>
       </View>
     </View>
   )

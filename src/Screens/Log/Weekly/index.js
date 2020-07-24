@@ -1,12 +1,20 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import DateScroller from '../../../components/DateScroller';
 
 
 export default function LogWeekly(props) {
 
   return (
     <View style={styles.container}>
-      <Text>Log</Text>
+      <DateScroller
+        dateHeader='Today'
+      // goBack={}
+      // goForward={}
+      />
+      <View style={styles.body}>
+        <Text>Weekly Log</Text>
+      </View>
     </View>
   )
 }
@@ -14,8 +22,11 @@ export default function LogWeekly(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+  },
+  body: {
+    flex: 1,
+    backgroundColor: '#707070',
     alignItems: 'center',
     justifyContent: 'center',
-  },
+  }
 });
