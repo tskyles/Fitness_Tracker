@@ -1,10 +1,11 @@
-import { FontAwesome, MaterialIcons } from '@expo/vector-icons';
+import { Foundation, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Settings from '../../../Screens/Settings';
 import LogStackNav from '../../Stack/Log';
+import PlanStackNav from '../../Stack/Plan';
 
 const Tab = createBottomTabNavigator();
 
@@ -28,9 +29,24 @@ export default function MainTabNav(props){
             options={{
               tabBarLabel: 'Log',
               tabBarIcon: ({focused, color, size}) => (
-                <FontAwesome
+                <Foundation
                   focused={focused}
-                  name="book"
+                  name="clipboard-pencil"
+                  size={size}
+                  color={color}
+                />
+              )
+            }}
+          />
+          <Tab.Screen
+            name='Plan'
+            component={PlanStackNav}
+            options={{
+              tabBarLabel: 'Plan',
+              tabBarIcon: ({ focused, color, size }) => (
+                <MaterialCommunityIcons
+                  focused={focused}
+                  name="book-open-page-variant"
                   size={size}
                   color={color}
                 />
