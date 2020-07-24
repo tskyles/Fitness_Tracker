@@ -3,12 +3,12 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import Log from '../../../Screens/Log';
 import Settings from '../../../Screens/Settings';
+import LogStackNav from '../../Stack/Log';
 
 const Tab = createBottomTabNavigator();
 
-export default function Main(props){
+export default function MainTabNav(props){
 
   return (
     <SafeAreaProvider>
@@ -24,7 +24,7 @@ export default function Main(props){
         >
           <Tab.Screen 
             name='Log'
-            component={Log}
+            component={LogStackNav}
             options={{
               tabBarLabel: 'Log',
               tabBarIcon: ({focused, color, size}) => (

@@ -8,7 +8,7 @@ import SignUp from '../../../components/SignUp';
 
 const Tab = createBottomTabNavigator();
 
-export default function Auth(props){
+export default function AuthTabNav(props){
   return(
     <SafeAreaProvider>
       <NavigationContainer>
