@@ -1,11 +1,22 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import CircleSelector from '../../../components/CircleSelector';
 
 export default function PlanCreateWeek(props) {
-
+  
   return (
     <View style={styles.container}>
-      <Text>Select Workout Days:</Text>
+      <View>
+        <Text>Select Workout Days:</Text>
+        <Text>unselected are considered rest days</Text>
+      </View>
+      <View>
+        <CircleSelector 
+          label='S'
+          circleStyle={styles.circle}
+          textStyle={styles.text}
+        />
+      </View>
     </View>
   )
 }
@@ -13,9 +24,16 @@ export default function PlanCreateWeek(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#ffffff',
     padding: 25,
-    // alignItems: 'center',
-    // justifyContent: 'center',
   },
+  circle: {
+    backgroundColor: '#ffffff',
+    height: 40,
+    width: 40,
+    borderRadius: 40/2,
+  },
+  text: {
+    fontSize: 20,
+  }
 });
