@@ -7,7 +7,6 @@ export default function CircleSelector(props){
 
   function handleOnPress(){
     setActive(!active);
-    console.log(active)
   }
 
   return (

@@ -14,6 +14,7 @@ export default function PlanCreateWeek(props) {
         <Text>unselected are considered rest days</Text>
       </View>
       <WeekDaysSelector
+        labels={dayLabels}
         circleStyle={styles.circleBase}
         circleStyleActive={styles.circleActive}
         circleStyleInactive={styles.circleInactive}
