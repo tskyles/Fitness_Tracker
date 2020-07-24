@@ -1,25 +1,24 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-
+import { Text, View } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function ModalDropDownList(props){
+  let elements = props.listItems.map((element, idx) => {
+      return (
+        <TouchableOpacity
+          key={idx}
+          style={{zIndex: 999}}
+          onPress={() => props.onPress(idx)}
+        >
+          <View style={props.listItemStyle}>
+            <Text style={props.listTextStyle}>{element}</Text>
+          </View>
+        </TouchableOpacity>
+  )})
 
   return (
-      <View style={styles.modalInner}>
-        <Text>Day</Text>
-        <Text>Week</Text>
-        <Text>Month</Text>
+      <View style={props.style}>
+        {elements}
       </View>
   )
 }
-
-const styles = StyleSheet.create({
-  modalInner: {
-    zIndex: 999,
-    position: 'absolute',
-    right: 20,
-    top: 50,
-    backgroundColor: '#7a7a7a',
-    width: 100,
-  }
-})

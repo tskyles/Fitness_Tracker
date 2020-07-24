@@ -1,5 +1,5 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import CalenderIcon from '../../../components/CalenderIcon';
 import ModalDropDownList from '../../../components/ModalDropDownList';
@@ -9,25 +9,40 @@ import LogWeekly from '../../../Screens/Log/Weekly';
 
 const Stack = createStackNavigator();
 
-export default function LogStackNav(){
+export default function LogStackNav(props){
   const [modalVisible, setModalVisible] = useState(false);
+  const [currentView, setCurrentView] = useState('Daily');
+  const views = ['Daily', 'Weekly', 'Monthly']
+
+  useEffect(() => {
+    props.navigation.navigate(currentView)
+  }, [currentView])
+
+  function selectView(idx){
+    setCurrentView(views[idx]);
+    setModalVisible(false);
+  }
 
   return (
     <Stack.Navigator
       initialRouteName='Daily'
       screenOptions={{
         headerTitle: 'Fitness Tracker',
-        headerRight: (props) => (
+        headerRight: (navigation) => (
           <>
             <CalenderIcon 
               onPress={() => {
-                console.log('pressed')
                 setModalVisible(!modalVisible);
               }}
             />
             {modalVisible && 
               <ModalDropDownList
+                style={styles.dropDown}
                 modalVisible={modalVisible}
+                listItems={views}
+                listTextStyle={styles.listText}
+                listItemStyle={styles.listItems}
+                onPress={selectView}
               />
             }
           </>
@@ -58,8 +73,22 @@ const styles = StyleSheet.create({
   headerIconRight: {
     marginRight: 10,
   },
-  modal: {
-    // position: "absolute",
-    // backgroundColor: 'blue'
+  dropDown: {
+    zIndex: 2,
+    position: 'absolute',
+    right: 20,
+    top: 50,
+    backgroundColor: '#7a7a7a',
+    width: 100,
+  },
+  listItems: {
+    height: 35,
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+    paddingRight: 10,
+    fontSize: 20,
+  },
+  listText: {
+    fontSize: 20,
   }
 })

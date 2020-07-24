@@ -1,6 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function LogHeader(props){
 
@@ -37,12 +38,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: 'center',
-    // backgroundColor: '#b53535',
   },
   touchable: {
     height: 35,
     width: 35,
     justifyContent: "center",
     alignItems: "center",
+    zIndex: 0,
   }
 })
