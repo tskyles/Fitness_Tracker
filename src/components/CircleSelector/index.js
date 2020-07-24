@@ -1,12 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function CircleSelector(props){
+  const [active, setActive] = useState(false);
+
+  function handleOnPress(){
+    setActive(!active);
+    console.log(active)
+  }
 
   return (
-    <View style={[styles.circle, props.circleStyle]}>
-      <Text style={[styles.text, props.textStyle]}>{props.label}</Text>
-    </View>
+    <TouchableOpacity
+      onPress={handleOnPress}
+    >
+      <View style={
+        active ?
+          [styles.circle, props.circleStyle, props.circleStyleActive]
+        :
+          [styles.circle, props.circleStyle, props.circleStyleInactive]
+      }>
+        <Text style={
+          active ?
+            [styles.text, props.textStyle, props.textStyleActive]
+          :
+            [styles.text, props.textStyle, props.textStyleInactive]
+        }>{props.label}</Text>
+      </View>
+    </TouchableOpacity>
   )
 }
 
