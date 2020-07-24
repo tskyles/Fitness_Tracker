@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function Settings(props) {
+export default function SettingsMain(props) {
 
   return (
     <View style={styles.container}>

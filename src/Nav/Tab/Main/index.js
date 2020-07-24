@@ -3,9 +3,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import Settings from '../../../Screens/Settings';
 import LogStackNav from '../../Stack/Log';
 import PlanStackNav from '../../Stack/Plan';
+import SettingsStackNav from '../../Stack/Settings';
 
 const Tab = createBottomTabNavigator();
 
@@ -55,7 +55,7 @@ export default function MainTabNav(props){
           />
           <Tab.Screen
             name='Settings'
-            component={Settings}
+            component={SettingsStackNav}
             options={{
               tabBarLabel: 'Settings',
               tabBarIcon: ({ focused, color, size }) => (
