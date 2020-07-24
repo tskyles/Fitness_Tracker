@@ -14,6 +14,8 @@ export default function WeekDaysSelector(props){
         circleStyleActive={props.circleStyleActive}
         circleStyleInactive={props.circleStyleInactive}
         textStyle={props.textStyle}
+        textStyleActive={props.textStyleActive}
+        textStyleInactive={props.textStyleInactive}
       />
     )
   })

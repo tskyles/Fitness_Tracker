@@ -14,10 +14,12 @@ export default function PlanCreateWeek(props) {
         <Text>unselected are considered rest days</Text>
       </View>
       <WeekDaysSelector
-        circleStyle={styles.circleShape}
+        circleStyle={styles.circleBase}
         circleStyleActive={styles.circleActive}
         circleStyleInactive={styles.circleInactive}
-        textStyle={styles.text}
+        textStyle={styles.textBase}
+        textStyleActive={styles.textStyleActive}
+        textStyleInactive={styles.textStyleInactive}
       />
     </View>
   )
@@ -29,7 +31,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     padding: 25,
   },
-  circleShape: {
+  circleBase: {
     height: 40,
     width: 40,
     borderRadius: 40 / 2,
@@ -40,7 +42,13 @@ const styles = StyleSheet.create({
   circleInactive: {
     backgroundColor: '#ffffff',
   },
-  text: {
+  textBase: {
     fontSize: 20,
+  },
+  textStyleActive: {
+    color: '#ffffff',
+  },
+  textStyleInactive: {
+    color: '#000000',
   }
 });
