@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import CircleSelector from '../CircleSelector';
 
 export default function WeekDaysSelector(props){
-  const [selectedDays, setSelectedDays] = useState([]);
+  const [selectedIndexes, setSelectedIndexes] = useState([]);
+
+  useEffect(() => {
+    let orderedSelected = selectedIndexes.sort((a, b) => a - b)
+    props.selectedDays({workingDays: orderedSelected});
+  }, [selectedIndexes])
 
   function handleCirclePress(idx){
-    if(!selectedDays.includes(idx)){
-      setSelectedDays([...selectedDays, idx]);
+    if(!selectedIndexes.includes(idx)){
+      setSelectedIndexes([...selectedIndexes, idx]);
     }else{
-      setSelectedDays(selectedDays.filter(element => element !== idx));
+      setSelectedIndexes(selectedIndexes.filter(element => element !== idx));
     }
   }
 

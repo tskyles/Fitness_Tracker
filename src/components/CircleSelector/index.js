@@ -7,6 +7,10 @@ export default function CircleSelector(props){
 
   function handleOnPress(){
     setActive(!active);
+    sendPressedIndex();
+  }
+
+  function sendPressedIndex(){
     props.onCirclePress(props.listIndex)
   }
 

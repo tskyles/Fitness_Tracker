@@ -1,6 +1,5 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
-import { PlanProvider } from '../../../context/PlanContext';
 import PlanCreateWeek from '../../../Screens/Plan/PlanCreateWeek';
 import PlanMain from '../../../Screens/Plan/PlanMain';
 
@@ -10,7 +9,6 @@ export default function PlanStackNav(props){
 
 
   return (
-    <PlanProvider>
       <Stack.Navigator>
         <Stack.Screen
           name='PlanMain'
@@ -21,6 +19,5 @@ export default function PlanStackNav(props){
           component={PlanCreateWeek}
         />
       </Stack.Navigator>
-    </PlanProvider>
   )
 }

@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import WeekDaysSelector from '../../../components/WeekDaysSelector';
+import { PlanContext } from '../../../context/PlanContext';
 
 export default function PlanCreateWeek(props) {
+  const {planData, setPlanData} = useContext(PlanContext);
   const dayLabels = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 
-  console.log(styles.circle)
-  
+  useEffect(() => {
+    console.log(planData)
+  }, [planData])
+
+
   return (
     <View style={styles.container}>
       <View>
@@ -21,6 +26,7 @@ export default function PlanCreateWeek(props) {
         textStyle={styles.textBase}
         textStyleActive={styles.textStyleActive}
         textStyleInactive={styles.textStyleInactive}
+        selectedDays={setPlanData}
       />
     </View>
   )
