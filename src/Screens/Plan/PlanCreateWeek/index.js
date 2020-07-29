@@ -1,16 +1,29 @@
-import React, { useContext, useEffect } from 'react';
+import { Picker } from '@react-native-community/picker';
+import React, { useContext, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import WeekDaysSelector from '../../../components/WeekDaysSelector';
 import { PlanContext } from '../../../context/PlanContext';
 
 export default function PlanCreateWeek(props) {
   const {planData, setPlanData} = useContext(PlanContext);
+  const [splitValue, setSplitValue] = useState('-')
   const dayLabels = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+  const splitOptions = ['-', 'A,B', 'PPL', 'Muscle Group', 'Custom'];
 
-  useEffect(() => {
-    console.log(planData)
-  }, [planData])
+  // useEffect(() => {
+  //   console.log(planData)
+  // }, [planData])
 
+  function createPickerItems(data){
+    return data.map(item => {
+      return (
+        <Picker.Item 
+          label={item}
+          value={item.replace(/\s/g, '').toLowerCase()}
+        />
+      )
+    })
+  }
 
   return (
     <View style={styles.container}>
@@ -28,6 +41,15 @@ export default function PlanCreateWeek(props) {
         textStyleInactive={styles.textStyleInactive}
         selectedDays={setPlanData}
       />
+      <View>
+        <Text>Choose Split Type:</Text>
+        <Picker
+          selectedValue={splitValue}
+          onValueChange={(itemValue) => setSplitValue(itemValue)}
+        >
+          {createPickerItems(splitOptions)}
+        </Picker>
+      </View>
     </View>
   )
 }
