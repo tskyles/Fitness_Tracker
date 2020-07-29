@@ -1,23 +1,70 @@
 import { Picker } from '@react-native-community/picker';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import WeekDaysSelector from '../../../components/WeekDaysSelector';
 import { PlanContext } from '../../../context/PlanContext';
 
 export default function PlanCreateWeek(props) {
   const {planData, setPlanData} = useContext(PlanContext);
-  const [splitValue, setSplitValue] = useState('-')
+  const [splitTypeValue, setSplitTypeValue] = useState('-');
+  const [daySplitTypeValues, setDaySplitTypeValues] = useState([ { split: '-' },
+    { split: '-' },
+    { split: '-' },
+    { split: '-' },
+    { split: '-' },
+    { split: '-' },
+    { split: '-' } ])
+  const initialLabelValue = ('-');
   const dayLabels = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
-  const splitOptions = ['-', 'A,B', 'PPL', 'Muscle Group', 'Custom'];
+  const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const splitTypes = ['-', 'AB', 'PPL', 'Muscle Group', 'Custom'];
+  const splitTypeOptions = {
+    '-': [],
+    'ab': ['-', 'A', 'B'],
+    'ppl': ['-', 'Push', 'Pull', 'Legs']
+  }
+
+  useEffect(() => {
+    console.log('planData', planData)
+  }, [planData])
 
   // useEffect(() => {
-  //   console.log(planData)
-  // }, [planData])
+  //   console.log(splitTypeValue)
+  // }, [splitTypeValue])
+
+  function setDayPickerValue(value, idx){
+    let modified = daySplitTypeValues;
+    modified[idx].split = value;
+    setDaySplitTypeValues(modified);
+  }
+
+  function createDayPickers(labels, labelIndexes, pickerCallback, valueCallback){
+    return labelIndexes.map((item, idx) => {
+      return (
+        <View
+          key={`pickerDayView${item}`}
+        >
+          <Text
+            key={`pickerDayText${item}`}
+          >{labels[item]}</Text>
+          <Picker
+            key={`pickerDayPicker${item}`}
+            selectedValue={daySplitTypeValues[item].split}
+            onValueChange={(itemValue) => valueCallback(itemValue, item)}
+            prompt='Split Day'
+          >
+            {pickerCallback}
+          </Picker>
+        </View>
+      )
+    })
+  }
 
   function createPickerItems(data){
-    return data.map(item => {
+    return data.map((item, idx) => {
       return (
         <Picker.Item 
+          key={`pickerSplit${idx}`}
           label={item}
           value={item.replace(/\s/g, '').toLowerCase()}
         />
@@ -44,12 +91,22 @@ export default function PlanCreateWeek(props) {
       <View>
         <Text>Choose Split Type:</Text>
         <Picker
-          selectedValue={splitValue}
-          onValueChange={(itemValue) => setSplitValue(itemValue)}
+          selectedValue={splitTypeValue}
+          onValueChange={(itemValue) => setSplitTypeValue(itemValue)}
+          prompt='Split Type'
         >
-          {createPickerItems(splitOptions)}
+          {createPickerItems(splitTypes)}
         </Picker>
       </View>
+      {(splitTypeValue !== initialLabelValue) &&
+        <View>
+          <Text>Set Split For Each Day:</Text>
+          <View>
+            {createDayPickers(dayNames, planData.workingDays, createPickerItems(splitTypeOptions[splitTypeValue]), setDayPickerValue)}
+          </View>
+        </View>
+      }
+
     </View>
   )
 }
